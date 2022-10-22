@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:semifinal/component/custom_button.dart';
 import 'package:semifinal/component/text_field.dart';
+import 'package:semifinal/screens/admin.dart';
 
 final CollectionReference userRef =
     FirebaseFirestore.instance.collection("users");
@@ -69,6 +70,11 @@ class _AddState extends State<Add> {
                   "name": nameController.text,
                   "age": ageController.text,
                 });
+                Navigator.push(context, MaterialPageRoute(
+                  builder: (context) {
+                    return const AdminPage();
+                  },
+                ));
               },
               text: "Add user"),
         )

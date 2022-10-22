@@ -1,5 +1,8 @@
+// ignore_for_file: use_build_context_synchronously, unnecessary_null_comparison
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:semifinal/screens/admin.dart';
 
 final CollectionReference userRef =
     FirebaseFirestore.instance.collection("users");
@@ -60,7 +63,11 @@ class _UpdateState extends State<Update> {
                           .update({"name": name, "age": age});
                       _nameController.text = '';
                       _ageController.text = '';
-                      Navigator.of(context).pop();
+                      Navigator.push(context, MaterialPageRoute(
+                        builder: (context) {
+                          return const AdminPage();
+                        },
+                      ));
                     }
                   },
                 )
