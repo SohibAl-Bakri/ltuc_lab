@@ -20,6 +20,7 @@ class _ReadState extends State<Read> {
       height: double.infinity,
       child: FutureBuilder<QuerySnapshot>(
         builder: ((context, snapshot) {
+          final int count = snapshot.data!.docs.length;
           return Container(
             decoration: const BoxDecoration(
               gradient: RadialGradient(
@@ -35,7 +36,7 @@ class _ReadState extends State<Read> {
                 color: Colors.black,
                 thickness: 2,
               ),
-              itemCount: snapshot.data!.docs.length,
+              itemCount: count,
               itemBuilder: (context, i) {
                 return ListTile(
                   subtitle: Text("${snapshot.data!.docs[i]['age']}"),

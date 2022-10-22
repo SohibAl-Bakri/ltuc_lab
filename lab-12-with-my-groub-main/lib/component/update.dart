@@ -84,6 +84,7 @@ class _UpdateState extends State<Update> {
       height: double.infinity,
       child: FutureBuilder<QuerySnapshot>(
         builder: ((context, snapshot) {
+          final int count = snapshot.data!.docs.length;
           return Container(
             decoration: const BoxDecoration(
                 gradient: RadialGradient(colors: [
@@ -96,7 +97,7 @@ class _UpdateState extends State<Update> {
                 color: Colors.black,
                 thickness: 2,
               ),
-              itemCount: snapshot.data!.docs.length,
+              itemCount: count,
               itemBuilder: (context, i) {
                 return ListTile(
                   subtitle: Text("${snapshot.data!.docs[i]['age']}"),
